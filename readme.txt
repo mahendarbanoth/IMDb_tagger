@@ -1,24 +1,23 @@
-IMDB_Rating_Tagger
+
+IMDB_Tagger
 
 This program will search the video files in the given path by the user and Extract the movie_name/TV_Series_name from the file_name.based on this file name it scrape the IMDB rating from imdb.com and rename the file_name with the original file_name and rating tag.   
 
- Instructions 
+Instructions 
 
- 1.If you didn't istalled pip
- 	+This program file requires guessit, To install guessit and pip run the command in your terminal. 
- 	- sudo apt-get install python-pip
- 	- sudo pip install guessit
-	- sudo pip install --upgrade google-api-python-client 
- 2.Create google search API with your google account and get 'my_api_key'(https://developers.google.com/maps/documentation/maps-static/get-api-key) and 'my_cse_id'(https://cse.google.com/cse/create/new).While you are creating mention www.imdb.com site in the google console search.
- 3.Download the archive and extract the .py file
- 4.paste your 'my_api_key' and 'my_cse_id' in the python code and save the file.
- 5.Open the terminal and type $python imdb_tagger.py
- 6.select the path of the movie or TV series Episode folder
- 7.Wait till it complete
+-->Install googleapiclient (sudo pip install --upgrade google-api-python-client)
+-->Install Guessit (sudo pip install guessit)
+-->Create google search API with your google account and get 'my_api_key'(https://developers.google.com/maps/documentation/maps-static/get-api-key) and 'my_cse_id'(https://cse.google.com/cse/create/new).While you are creating mention www.imdb.com site in the google console search.
+-->ownload the archive and extract the .py file
+-->paste your 'my_api_key' and 'my_cse_id' in the python code and save the file.
+-->Open the terminal and type $python imdb_tagger.py
+-->select the path of the movie or TV series Episode folder
+-->Wait till it complete
 
-
-Following takes place 
-	1.Read all video files from the given path, stores the file_names in a list.
-	2.Iterating throught each name in the list, sent a get request at IMDb site with the query file_name
-	3.Scrape the IMBD rating from the result and tag to the orignal file_name.
-	4.finally rename the file_name with the new name which has a IMDB rating.
+What Happens
+-->First you need to give your google api key and cse id.
+-->when you first run the code, the script asks you to give the location of the folder in which the movies and series are loacted.
+-->Then the script first selects the first file and checks whether there is an IMDb tag, if present it gives you response that the file has IMDb tag and goes to next file.
+-->If the file doesn't have tag, then by using our both api keys we search for the movie/series name in IMDb site  and choose the first 10 results.
+-->After this we convert the page into lxml format and we search for the rating value of the movie/series and then we scrape the data.
+-->After getting the ratingvalue we rename the file name with IMDb rating(Example- Hera pheri[IMDD-8.2]) and gives the  output that the IMDb tag has been added to the file.
